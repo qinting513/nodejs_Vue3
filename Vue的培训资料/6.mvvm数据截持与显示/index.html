@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>mvvm</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>a中a的值: {{a.aa}}</p>
+        <div>b的值: {{b}}</div>
+    </div>
+
+    <script src="mvvm.js"></script>
+    <script>
+        let vueDemo = new VueDemo({
+            el: '#app',
+            data: {
+                a: {
+                    aa: 12
+                },
+                b: 2
+            }
+        })
+    </script>
+</body>
+
+</html>

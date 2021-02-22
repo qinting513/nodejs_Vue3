@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>Document</title>
+
+</head>
+
+
+<body>
+    <div id="app">
+        <p>a中a的值:{{a.a}}</p>
+        <div>b的值: {{b}}</div>
+        <div>c的值: {{c}}</div>
+        <input type="text" v-model="b">
+        <div>b+c= {{hello}}</div>
+    </div>
+    <script src="./mvvm.js"></script>
+    <script>
+        let vueDemo = new VueDemo({
+            el: '#app',
+            data: {
+                a: {
+                    a: 100
+                },
+                b: 200,
+                c: 20
+            },
+            computed: {
+                hello() {
+                    return Number(this.b) + Number(this.c)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

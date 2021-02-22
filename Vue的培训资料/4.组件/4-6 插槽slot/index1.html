@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>插槽 - 具名插槽</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <child>
+            <h1 slot="header">header</h1>
+            <h1 slot="footer">footer</h1>
+        </child>
+    </div>
+
+    <script>
+        var child = {
+            template: `<div>
+                  <slot name="header"></slot>
+                  <div>
+                    <h2>content</h2>
+                  </div>
+                  <slot name="footer"></slot>
+                </div>`
+        }
+
+        var vm = new Vue({
+            components: {
+                child: child
+            },
+            el: "#root"
+        })
+    </script>
+
+</body>
+
+</html>

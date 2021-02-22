@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>组件参数校验</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <child :content="123"></child>
+        <!-- <child></child> -->
+        <!-- <child :content="pContent"></child> -->
+    </div>
+
+    <script>
+        Vue.component('child', {
+            props: {
+                content: {
+                    // type: String,
+                    // type: [Number, String], // 接收多种类型的参数
+                    // required: true,
+                    // default: 'default value',
+                    validator: function(value) {
+                        return (value.length > 5)
+                    }
+                }
+            },
+            template: '<div>{{content}}</div>'
+        })
+
+        var vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    pContent: 12
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

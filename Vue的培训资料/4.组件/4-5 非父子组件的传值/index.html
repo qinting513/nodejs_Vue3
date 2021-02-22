@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>非父子组件的传值</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <child content="childOne"></child>
+        <child content="childTwo"></child>
+    </div>
+
+    <script>
+        // bus 总线 进行非父子组件的传值
+
+        Vue.prototype.bus = new Vue()
+
+        Vue.component('child', {
+            props: ['content'],
+            data: function() {
+                return {
+                    myContent: this.content
+                }
+            },
+            template: '<div @click="handleClick">{{myContent}}</div>',
+            methods: {
+                handleClick: function() {
+                    this.bus.$emit('change', this.myContent)
+                }
+            },
+            mounted: function() {
+                var this_ = this;
+                this.bus.$on('change', function(content) {
+                    this_.myContent = content
+                })
+            }
+        })
+
+        var vm = new Vue({
+            el: "#root"
+        })
+    </script>
+
+</body>
+
+</html>

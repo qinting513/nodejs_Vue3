@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>给组件绑定原生事件@click.native</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <child @click="handleClick"></child>
+    </div>
+
+    <script>
+        Vue.component('child', {
+            template: '<div>Child</div>',
+            methods: {
+                // 方法2：参照4-2 父子组件传值
+                // childClick() {
+                //     alert('childClick')
+                // }
+            }
+        })
+
+        var vm = new Vue({
+            el: '#root',
+            methods: {
+                handleClick: function() {
+                    alert('click')
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
